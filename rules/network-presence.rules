@@ -1,0 +1,53 @@
+import org.openhab.core.library.types.*
+import org.openhab.core.persistence.*
+import org.openhab.model.script.actions.*
+
+/**
+ * Networkhealth
+ * @see  http://www.itbasic.de/openhab-anwesenheitserkennung/
+ * http://www.itbasic.de/openhab-man-kommt-nach-hause-und-das-licht-geht-an/
+ * https://github.com/openhab/openhab/wiki/Network-Health-Binding
+ * http://mybraindumb.blogspot.de/2014/06/smarthome-20-wie-openhab-netatmo-hue.html
+ */
+ 
+rule presentIpad 
+	when
+ 		Item MOBILE_IPAD changed to ON
+	then 
+		logInfo("PresenceCheck", "Ipad is present")
+ end
+ 
+ rule notPresentIpad 
+ 	when
+ 		Item MOBILE_IPAD changed to OFF
+ then 
+		logInfo("PresenceCheck", "Ipad is not present")
+ end
+ 
+ rule presentMichael
+	when
+ 		Item MOBILE_SONY_Z3_MICHAEL changed to ON
+	then 
+		logInfo("PresenceCheck", "Michael is present")
+ end
+ 
+ rule notPresentMichael 
+ 	when
+ 		Item MOBILE_SONY_Z3_MICHAEL changed to OFF
+ then 
+		logInfo("PresenceCheck", "Michael is not present")
+ end
+ 
+ rule presentSerena
+	when
+ 		Item MOBILE_SAMSUNG_SERENA changed to ON
+	then 
+		logInfo("PresenceCheck", "Serena is present")
+ end
+ 
+ rule notPresentSerena
+ 	when
+ 		Item MOBILE_SAMSUNG_SERENA changed to OFF
+ then 
+		logInfo("PresenceCheck", "Serena is not present")
+ end

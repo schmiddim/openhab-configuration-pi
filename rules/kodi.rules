@@ -1,0 +1,73 @@
+import org.openhab.core.library.types.*
+import org.openhab.core.persistence.*
+import org.openhab.model.script.actions.*
+import java.util.Date
+
+rule "Dim Light while Play"
+when 
+	Item XBMC_PLAYER_STATE changed to Play
+then 
+
+	logInfo("Xbmc", "Play")
+	if(ALL_WZ_Alle.state  > 0) {
+		sendCommand(ALL_WZ_Alle,10);		
+	} else {
+		logInfo("Xbmc", "Light Off")
+	}
+		
+end
+
+
+
+rule "Raise Light while Pause"
+when 
+	Item XBMC_PLAYER_STATE changed to Pause
+then 
+	logInfo("Xbmc", "Pause")
+	if(ALL_WZ_Alle.state  > 0) {
+		sendCommand(ALL_WZ_Alle, 90);
+	} else {
+		logInfo("Xbmc", "Light Off")
+	}
+
+end
+
+rule "Raise Light while Stop"
+when 
+	Item XBMC_PLAYER_STATE changed to Stop
+then 
+	logInfo("Xbmc", "Stop")
+	if(ALL_WZ_Alle.state  > 0) {
+		sendCommand(ALL_WZ_Alle, 90);
+	} else {
+		logInfo("Xbmc", "Light Off")
+	}
+end
+/////////////////////////
+
+/*
+rule "Lights on when paused"
+when
+      Item MOBILE_IPAD changed to OFF
+then
+	logInfo("PresenceCheck", "Light Simulation Stop")
+	if(ALL_WZ_Alle.state  > 0) {
+		sendCommand(ALL_WZ_Alle,10);		
+	} else {
+
+	}
+
+end
+
+rule "Dimm Lights on when play"
+when
+      Item MOBILE_IPAD changed to ON
+then
+	logInfo("PresenceCheck", "Light Simulation Play")
+	if(ALL_WZ_Alle.state  > 0) {
+		sendCommand(ALL_WZ_Alle, 90);
+	} else {
+
+	}
+end
+*/

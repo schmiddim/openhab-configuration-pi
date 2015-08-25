@@ -1,0 +1,24 @@
+ /**
+ * Bridge 1 
+ */
+Dimmer ALL_WZ_Alle     		"Alle"  				<light>  (gWohnzimmer, FF_Office)   	{milight="bridge1;6;brightness;100"}                     
+Dimmer Light_WZ_Tisch  		"Tisch"  				<light>  (gWohnzimmer, FF_Office)      	{milight="bridge1;7;brightness;100"}  
+Dimmer Light_WZ_Sofa		"Hinter dem Sofa"  		<light>  (gWohnzimmer, FF_Office)		{milight="bridge1;8;brightness;100"}
+Dimmer Light_WZ_Fernseher	"Neben dem Fernseher"  	<light>  (gWohnzimmer, FF_Office)      	{milight="bridge1;9;brightness;100"}
+
+Switch ALL_WZ_Alle_WHITE_MODE     		"Alle"  				<light>  (gWohnzimmer, FF_Office)   	{milight="bridge1;6;whiteMode"}
+/**
+ * Bridge 2
+ */
+Dimmer BRIGDE_2_ALL     			"2 Alle"  				<light>   						{milight="bridge2;6;brightness;100"}
+Dimmer BRIGDE_2_1_BUERO_FENSTERBANK	"Büro Fensterbank " 	<light>  (Buero)   				{milight="bridge2;7;brightness;100"}
+Switch BRIGDE_2_1_BUERO_FENSTERBANK_WHITE_MODE     		"Alle"  				<light>  (gWohnzimmer, FF_Office)   	{milight="bridge2;7;whiteMode"}
+Dimmer BRIGDE_2_2_BUERO_DECKE  		"Büro Decke"			<light>  (Buero)  				{milight="bridge2;8;brightness;100"}
+Dimmer BRIGDE_2_3_SZ_MICHAEL  		"Schlafzimmer Michael"	<light>  (GroupSchlafzimmer)   	{milight="bridge2;9;brightness;100"}
+Dimmer BRIGDE_2_4_SZ_SERENA			"Schlafzimmer Serena"	<light>  (GroupSchlafzimmer)   	{milight="bridge2;10;brightness;100"}
+
+/**
+* For the light Rules
+*/
+Switch BueroAlle "Buero Alle"
+Switch SchlafzimmerAlle "Schlafzimmer Alle"

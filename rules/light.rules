@@ -1,0 +1,93 @@
+import org.openhab.core.library.types.*
+import org.openhab.core.persistence.*
+import org.openhab.model.script.actions.*
+
+
+
+/**
+ * This function switches a group of two milights to a passed state
+ */
+val org.eclipse.xtext.xbase.lib.Functions$Function3 groupSwitch2 = [
+	 org.openhab.core.library.items.SwitchItem a
+	  ,org.openhab.core.library.items.SwitchItem b
+    ,String state
+ 	|
+ 	a.sendCommand(state) 	
+ 	createTimer(now.plusSeconds(1)) [|
+ 		b.sendCommand(state)
+	]     
+]
+
+/**
+ * Mehrere Milights können nicht auf einmal ausgeschaltet werden
+ */
+
+rule BueroAlleOn
+	when Item BueroAlle received command ON
+then
+	groupSwitch2.apply(BRIGDE_2_1_BUERO_FENSTERBANK,BRIGDE_2_2_BUERO_DECKE, "ON")
+	BUERO_SCHRANK.sendCommand(ON)
+
+end
+
+rule BueroAlleOff
+	when Item BueroAlle received command OFF
+then
+	groupSwitch2.apply(BRIGDE_2_1_BUERO_FENSTERBANK,BRIGDE_2_2_BUERO_DECKE, "OFF")
+	BUERO_SCHRANK.sendCommand(OFF)
+end
+
+/**
+ * Mehrere Milights können nicht auf einmal ausgeschaltet werden
+ */
+rule SchalfzimmerAlleOn
+	when Item SchlafzimmerAlle received command ON
+then
+	groupSwitch2.apply(BRIGDE_2_3_SZ_MICHAEL,BRIGDE_2_4_SZ_SERENA, "ON")
+
+end
+
+/**
+ * Mehrere Milights können nicht auf einmal ausgeschaltet werden
+ */
+rule SchalfzimmerAlleOff
+when
+Item SchlafzimmerAlle received command OFF
+then
+	groupSwitch2.apply(BRIGDE_2_3_SZ_MICHAEL,BRIGDE_2_4_SZ_SERENA, "OFF")
+end
+
+
+/**
+ * Licht morgens im Schlafzimmer einschalten
+ * 6:45 : 50%
+ * 7:00 : 100%
+ * 7:20 : aus
+ */
+rule SchlafzimmerDimmedTo50At645
+when
+	Time cron "0 45 6 * * ?"
+then
+	//	sendCommand(BRIGDE_2_1_BUERO_FENSTERBANK, 10)
+		
+		groupSwitch2.apply(BRIGDE_2_3_SZ_MICHAEL,BRIGDE_2_4_SZ_SERENA, "10")
+end
+
+rule SchlafzimmerDimmedTo90At700
+when
+	Time cron "0 0 7 * * ?"
+then
+//		sendCommand(BRIGDE_2_1_BUERO_FENSTERBANK, 90)
+			groupSwitch2.apply(BRIGDE_2_3_SZ_MICHAEL,BRIGDE_2_4_SZ_SERENA, "90")
+end
+ 
+ 
+rule SchlafzimmerOffAt730
+when
+	Time cron "0 20 7 * * ?"
+then
+	//	sendCommand(BRIGDE_2_1_BUERO_FENSTERBANK, OFF)
+			groupSwitch2.apply(BRIGDE_2_3_SZ_MICHAEL,BRIGDE_2_4_SZ_SERENA, "OFF")
+end
+
+

@@ -1,0 +1,1 @@
+String XBMC_PLAYER_STATE "XBMC Living Room" {xbmc="<[#livingRoom|Player.State]"}

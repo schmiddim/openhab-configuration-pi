@@ -1,0 +1,3 @@
+Switch BUERO_SCHRANK "Schrank-Lampe"  (Buero)    {exec=">[OFF:sudo /home/pi/rcswitch-pi/send 11111 1 0] >[ON:sudo /home/pi/rcswitch-pi/send 11111 1 1]"}
+
+

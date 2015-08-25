@@ -1,0 +1,41 @@
+sitemap lampen    label= "Beleuchtung"   { 
+	Frame {
+	    Group item=Astro
+	  }
+ 	Frame {
+ 		Text item=Temperature valuecolor=[Temperature=="Uninitialized"="lightgray",Temperature>90="lightgray",>25="orange",>15="green",>5="orange",<=5="blue"]{
+ 		Text item=Temperature
+ 		Text item=Condition
+ 		Text item=Temp_Feel
+ 		Text item=Temp_MinMax
+ 		Text item=Humidity
+ 		Text item=Pressure
+ 		Text item=Pressure_Trend
+ 		Text item=Clouds
+ 		Text item=Wind_Speed
+ 		Text item=Wind_Direction
+ 		}
+	  }
+	Frame icon="1stfloor" {
+		Switch item=BueroAlle
+		Switch item=BRIGDE_2_1_BUERO_FENSTERBANK
+		Switch item=BRIGDE_2_2_BUERO_DECKE
+		Switch item=BUERO_SCHRANK
+	}
+	Frame icon="1stfloor" {
+		Switch item=SchlafzimmerAlle
+	}
+	Frame icon="1stfloor" {
+		Switch item=ALL_WZ_Alle label="Alle Wohnzimmer"		
+	}
+
+	Frame {
+		Text item=OctoprintStatus{
+			Text item=OctoprintStatus
+			Switch item=BUERO_REPRAP
+		}	
+	}	
+
+	
+
+}

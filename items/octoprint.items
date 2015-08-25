@@ -1,0 +1,6 @@
+Group Printer <sun> (All)
+
+String OctoprintStatus    "Printer: [%s]"  <sun> (Printer){ exec="<[php /opt/scripts-for-openhab/octoprint-status.php --url=http://192.168.0.105/ --apikey=951657F1F5F34B23AF6419B3C3E75192:10000:REGEX((.*?))]" }
+
+
+Switch BUERO_REPRAP "DRUCKER" <sun>  (Printer)   {exec=">[OFF:sudo /home/pi/rcswitch-pi/send 11111 4 0] >[ON:sudo /home/pi/rcswitch-pi/send 11111 4 1]"}

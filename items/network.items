@@ -1,0 +1,9 @@
+/**
+ * Networkhealth
+ * @see  http://www.itbasic.de/openhab-anwesenheitserkennung/
+ * http://www.itbasic.de/openhab-man-kommt-nach-hause-und-das-licht-geht-an/
+ * https://github.com/openhab/openhab/wiki/Network-Health-Binding
+ */
+Switch MOBILE_IPAD 				"Ipad Mini"		(Status, Network)   {nh="192.168.0.182"}
+Switch MOBILE_SONY_Z3_MICHAEL 	"Phone Michael"	(Status, Network)   {nh="192.168.0.197"}
+Switch MOBILE_SAMSUNG_SERENA 	"Phone Serena" 	(Status, Network)   {nh="192.168.0.110"}
