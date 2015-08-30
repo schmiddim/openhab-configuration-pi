@@ -2,8 +2,8 @@ sitemap lampen    label= "Beleuchtung"   {
 	Frame {
 	    Group item=Astro
 	  }
- 	Frame {
- 		Text item=Temperature valuecolor=[Temperature=="Uninitialized"="lightgray",Temperature>90="lightgray",>25="orange",>15="green",>5="orange",<=5="blue"]{
+ 	Frame  {
+ 		Text icon="temperature"  item=Temperature valuecolor=[Temperature=="Uninitialized"="lightgray",Temperature>90="lightgray",>25="orange",>15="green",>5="orange",<=5="blue"]{
  		Text item=Temperature
  		Text item=Condition
  		Text item=Temp_Feel
@@ -26,16 +26,20 @@ sitemap lampen    label= "Beleuchtung"   {
 		Switch item=SchlafzimmerAlle
 	}
 	Frame icon="1stfloor" {
-		Switch item=ALL_WZ_Alle label="Alle Wohnzimmer"		
+		Switch item=ALL_WZ_Alle label="Alle Wohnzimmer" icon="sofa"
 	}
 
 	Frame {
-		Text item=OctoprintStatus{
+		Text icon="socket-off" item=OctoprintStatus{
 			Text item=OctoprintStatus
 			Switch item=BUERO_REPRAP
 		}	
 	}	
 
-	
+	Text label="Trambahn" icon="siren-on" {
+		Frame label="Trambahn" {
+			Webview url="http://mvv.radikalblogger.de/?haltestelle=Karl-Theodor-Stra%DFe" height=15	
+		}
+	}
 
 }
